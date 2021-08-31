@@ -1,16 +1,19 @@
 import React from "react";
 import "../../App.css";
-import Input from "../../components/Input";
+import { StyledInput } from "../../components/Input/styles.js";
 import Button from "../../components/Button";
-import { FaLock } from "react-icons/fa";
+import { FaLock, FaAddressBook } from "react-icons/fa";
 
 export default function LogIn({ children }) {
   return (
     <div className="container-main">
       <header className="title">Rapptr Labs</header>
-      <Input />
-      <Input />
-      <FaLock className="form-icon lock" />
+      <div className="input-container">
+        <FaAddressBook className="form-icon book" />
+        <StyledInput type="email" placeholder="input email" />
+        <FaLock className="form-icon" />
+        <StyledInput type="password" placeholder={`input password`} />
+      </div>
       <Button>Log In</Button>
     </div>
   );
