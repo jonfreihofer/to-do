@@ -8,13 +8,13 @@ export default function LogIn({ children }) {
   return (
     <div className="container-main">
       <header className="title">Rapptr Labs</header>
-      <div className="input-container">
+      <form className="input-container">
         <FaAddressBook className="form-icon book" />
         <StyledInput type="email" placeholder="input email" />
         <FaLock className="form-icon" />
         <StyledInput type="password" placeholder={`input password`} />
-      </div>
-      <Button>Log In</Button>
+        <Button>Log In</Button>
+      </form>
     </div>
   );
 }

@@ -4,7 +4,7 @@ export const StyledButton = styled.button`
   background: ${globalStyles.mainColor};
   color: white;
   border: none;
-  height: 15%;
+  height: 20%;
   width: 25%;
   padding: 10px 18px;
   border-radius: 15px;
