@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledInputEmail = styled.input`
   border: ${({ emailIsValid }) => (emailIsValid ? "none" : "solid 3px red")};
@@ -37,6 +37,15 @@ export const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
+  ${(props) =>
+    props.regular &&
+    css`
+      border: none;
+      height: 25%;
+      max-height: 35px;
+      max-width: 25%;
+    `}
+
   ::placeholder {
     text-align: center;
     text-transform: uppercase;

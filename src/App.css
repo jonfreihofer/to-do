@@ -6,12 +6,13 @@
   display: flex;
   letter-spacing: 2px;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   align-self: center;
   height: 50vh;
   margin-top: 17%;
   justify-content: space-between;
 }
+
 .email {
   position: absolute;
   text-shadow: none;
@@ -117,7 +118,7 @@ label {
   }
 }
 
-/* main page */
+/* main todo page */
 .todo {
   font-size: 4em;
   text-shadow: 4px 4px #888888;
@@ -126,17 +127,48 @@ label {
   flex-direction: column;
   align-items: center;
   align-self: center;
-  height: 30vh;
+  height: 100vh;
+  width: 100vw;
   position: relative;
   justify-content: space-between;
 }
+
+.searchBar {
+  border: solid 2px var(--main-bg-color);
+  height: 28vh;
+  width: 55%;
+  display: inline;
+}
+.container-todo-items {
+  border: solid 2px var(--main-bg-color);
+  height: 100vh;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin-left: 20%;
+  margin-top: 20%;
+}
+
+.new {
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  left: 10px;
+  height: 8px;
+  text-align: center;
+}
+
 .title__todo {
   margin-bottom: 60px;
   position: absolute;
   top: -150px;
 }
+
 .logout {
-  width: auto;
+  height: 30px;
   position: absolute;
   top: -200px;
   left: 900px;
