@@ -8,7 +8,7 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <LogIn />
           </Route>
           <Route path="/main">

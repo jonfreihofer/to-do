@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "../../App.css";
-import { StyledInput } from "../../components/Input/styles.js";
-import Button from "../../components/Button";
+import { useHistory } from "react-router-dom";
+
+import {
+  StyledInputEmail,
+  StyledInput,
+} from "../../components/Input/styles.js";
+import { StyledButton } from "../../components/Button/styles.js";
 import { FaLock, FaAddressBook } from "react-icons/fa";
 import useValidate from "../../hooks/useValidate";
 
@@ -10,34 +15,78 @@ export default function Form({ children }) {
     userEmail: "",
     userPassword: "",
   });
+  const history = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputData((prevInputData) => ({ ...prevInputData, [name]: value }));
-    console.log(inputData.userEmail);
     validateEmail(inputData.userEmail);
+    validatePassword(inputData.userPassword);
   };
-  const { validateEmail } = useValidate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const bodyParams = {
+      email: inputData.userEmail,
+      password: inputData.userPassword,
+    };
+    const options = {
+      method: "POST",
+      body: JSON.stringify(bodyParams),
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+    fetch("https://dev.rapptrlabs.com/Tests/scripts/user-login.php", options)
+      .then((response) =>
+        response.json().then((post) => {
+          console.log(post);
+        })
+      )
+      .catch((err) => console.error(err));
+    history.push("/main");
+  };
+
+  const { validateEmail, emailIsValid, validatePassword, passwordIsValid } =
+    useValidate();
   return (
-    <form className="input-container">
+    <form className="input-container" onSubmit={handleSubmit}>
       <label htmlFor="userEmail">Email:</label>
       <FaAddressBook className="form-icon book" />
-      <StyledInput
+      <StyledInputEmail
         type="email"
         placeholder="user@rapptrlabs.com"
         name="userEmail"
         value={inputData.userEmail}
         onChange={handleChange}
+        emailIsValid={emailIsValid}
         required
       />
+      {!emailIsValid && (
+        <p className="email" style={{ color: "red", fontSize: "12px" }}>
+          Invalid Email
+        </p>
+      )}
       <label htmlFor="userPassword">Password:</label>
-      <FaLock className="form-icon" />
+      <FaLock className="form-icon lock" />
       <StyledInput
         type="password"
-        placeholder={`input password`}
+        placeholder={"must be at least 4 characters"}
         name="userPassword"
+        value={inputData.userPassword}
+        onChange={handleChange}
+        passwordIsValid={passwordIsValid}
       />
+      {!passwordIsValid && (
+        <p className="password" style={{ color: "red", fontSize: "12px" }}>
+          Invalid Password
+        </p>
+      )}
 
-      <Button>Log In</Button>
+      <StyledButton
+        style={{ opacity: emailIsValid && passwordIsValid ? 1 : 0.5 }}
+        disabled={emailIsValid && passwordIsValid ? false : true}
+      >
+        Log In
+      </StyledButton>
     </form>
   );
 }

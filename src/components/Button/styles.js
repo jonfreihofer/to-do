@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import globalStyles from "../../design/globalStyles";
 export const StyledButton = styled.button`
   background: ${globalStyles.mainColor};
@@ -7,6 +7,7 @@ export const StyledButton = styled.button`
   height: 20%;
   width: 25%;
   padding: 10px 18px;
+  margin-top: 20px;
   border-radius: 15px;
   font-family: ${globalStyles.font};
   font-size: 0.35em;
@@ -18,9 +19,14 @@ export const StyledButton = styled.button`
     opacity: 1;
     background: ${globalStyles.selectedColor};
   }
+  ${(props) =>
+    props.login &&
+    css`
+      width: 25%;
+    `}
   @media (max-width: 600px) {
     margin-bottom: 200px;
     width: 55%;
-    height: 8%;
+    height: 10%;
   }
 `;
