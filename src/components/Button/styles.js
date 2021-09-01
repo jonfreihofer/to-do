@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import globalStyles from "../../design/globalStyles";
 export const StyledButton = styled.button`
   background: ${globalStyles.mainColor};
@@ -19,6 +19,11 @@ export const StyledButton = styled.button`
     opacity: 1;
     background: ${globalStyles.selectedColor};
   }
+  ${(props) =>
+    props.login &&
+    css`
+      width: 25%;
+    `}
   @media (max-width: 600px) {
     margin-bottom: 200px;
     width: 55%;

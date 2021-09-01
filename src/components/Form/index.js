@@ -16,7 +16,6 @@ export default function Form({ children }) {
     userPassword: "",
   });
   const history = useHistory();
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputData((prevInputData) => ({ ...prevInputData, [name]: value }));

@@ -5,10 +5,11 @@ import "../../App.css";
 export default function Main({ children }) {
   return (
     <>
-      <div className="container-main">
-        <header className="title">To Do</header>
-
-        <StyledButton>Log Out</StyledButton>
+      <div className="container-main todo">
+        <header className="title__todo">To Do</header>
+        <StyledButton login className="logout">
+          Log Out
+        </StyledButton>
       </div>
     </>
   );
