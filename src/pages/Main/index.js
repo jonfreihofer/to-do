@@ -1,9 +1,15 @@
 import React from "react";
+import { StyledButton } from "../../components/Button/styles.js";
+import "../../App.css";
 
 export default function Main({ children }) {
   return (
     <>
-      <p>Dog</p>
+      <div className="container-main">
+        <header className="title">To Do</header>
+
+        <StyledButton>Log Out</StyledButton>
+      </div>
     </>
   );
 }

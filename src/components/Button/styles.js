@@ -7,6 +7,7 @@ export const StyledButton = styled.button`
   height: 20%;
   width: 25%;
   padding: 10px 18px;
+  margin-top: 20px;
   border-radius: 15px;
   font-family: ${globalStyles.font};
   font-size: 0.35em;
@@ -21,6 +22,6 @@ export const StyledButton = styled.button`
   @media (max-width: 600px) {
     margin-bottom: 200px;
     width: 55%;
-    height: 8%;
+    height: 10%;
   }
 `;

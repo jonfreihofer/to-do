@@ -1,3 +1,5 @@
+/*log in page */
+
 .container-main {
   font-size: 4em;
   text-shadow: 4px 4px #888888;
@@ -8,12 +10,32 @@
   align-self: center;
   height: 50vh;
   margin-top: 17%;
-
   justify-content: space-between;
+}
+.email {
+  position: absolute;
+  text-shadow: none;
+  display: inline;
+  top: 70px;
+  left: 450px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.password {
+  position: absolute;
+  text-shadow: none;
+  display: inline;
+  top: 165px;
+  left: 450px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .title {
-  margin-bottom: 6px;
+  /* margin-bottom: 14px; */
+  /* display: inline; */
+  left: 7px;
 }
 
 .input-container {
@@ -22,20 +44,25 @@
   height: 100%;
   width: 100%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   position: relative;
   margin: 0 auto;
 }
 
+label {
+  font-size: 0.3em;
+  text-shadow: none;
+  text-align: left;
+}
 .input-container .form-icon {
   font-size: 20px;
   position: absolute;
-  top: 138px;
+  top: 140px;
   left: 470px;
 }
 
 .input-container .book {
-  top: 40px;
+  top: 45px;
   left: 470px;
 }
 
@@ -54,21 +81,40 @@
   .input-container {
     display: flex;
     flex-direction: column;
-    height: 30%;
+    height: 70%;
     width: 100%;
     align-items: center;
     position: relative;
     margin: 0 auto;
   }
-  .input-container .form-icon {
+  .input-container .lock {
     font-size: 20px;
     position: absolute;
-    top: 138px;
+    top: 135px;
     left: 50px;
   }
 
   .input-container .book {
-    top: 40px;
+    position: absolute;
+    top: 45px;
     left: 50px;
   }
+
+  .email {
+    position: absolute;
+    text-shadow: none;
+    display: inline;
+    top: 70px;
+    left: 35px;
+  }
+
+  .password {
+    position: absolute;
+    text-shadow: none;
+    display: inline;
+    top: 159px;
+    left: 35px;
+  }
 }
+
+/* main page */
