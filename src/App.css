@@ -137,6 +137,7 @@ label {
   border: solid 2px var(--main-bg-color);
   height: 28vh;
   width: 55%;
+  margin-bottom: 5px;
   display: inline;
 }
 .container-todo-items {

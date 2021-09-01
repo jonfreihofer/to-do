@@ -7,5 +7,6 @@ export const StyledToDo = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 5px;
   flex-wrap: wrap;
 `;
