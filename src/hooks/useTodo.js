@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import ToDo from "../components/ToDo";
 
 export default function useTodo() {
@@ -7,6 +7,24 @@ export default function useTodo() {
     item: "first todo",
   });
   const [todoList, setTodoList] = useState([]);
+  useEffect(
+    () => {
+      localStorage.setItem("todoList", JSON.stringify(todoList));
+    },
+    [todoList],
+    () => {
+      const localData = localStorage.getItem("todoList");
+      const dataJSON = JSON.parse(localData);
+      return setTodoList(localData ? dataJSON : []);
+    }
+  );
+
+  //   let hydrateTodos = () => {};
+  //   const localData = localStorage.getItem("todoList");
+  //   console.log(localData);
+  //   const dataJSON = JSON.parse(localData);
+  //   setTodoList(localData ? dataJSON : []);
+  //   hydrateTodos();
 
   const [todoSearch, setTodoSearch] = useState({
     searchTodo: "",
