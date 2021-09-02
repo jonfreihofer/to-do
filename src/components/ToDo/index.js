@@ -7,11 +7,10 @@ import { StyledButton } from "../../components/Button/styles.js";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 import useTodo from "../../hooks/useTodo";
 
-export default function ToDo({ children }) {
+export default function ToDo({ children, id }) {
   const [editMode, setEditMode] = useState(true);
-  const { todo, setTodo } = useTodo();
+  const { todo, setTodo, deleteTodo } = useTodo();
   const toggleEditMode = () => {
-    console.log("works");
     setEditMode(!editMode);
   };
   const handleTodo = (e) => {
@@ -19,13 +18,6 @@ export default function ToDo({ children }) {
     setTodo((prevToDo) => ({ ...prevToDo, [name]: value }));
   };
   const saveTodo = () => {
-    if (!todo.edit) {
-      setTodo((prevTodos) => ({
-        id: prevTodos.id,
-        item: "Todo Goes Here",
-      }));
-      alert("Please Enter Something");
-    }
     setEditMode(!editMode);
   };
   const renderButtonOrIcons = () => {
@@ -40,7 +32,7 @@ export default function ToDo({ children }) {
         <>
           <FaPencilAlt className="todo-icon pencil" onClick={toggleEditMode} />
           <br />
-          <FaTrash className="todo-icon trash" />
+          <FaTrash className="todo-icon trash" onClick={() => deleteTodo(id)} />
         </>
       );
     }
