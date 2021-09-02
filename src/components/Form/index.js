@@ -37,7 +37,7 @@ export default function Form({ children }) {
         "Content-type": "application/json",
       },
     };
-    fetch("https://dev.rapptrlabs.com/Tests/scripts/user-login.php", options)
+    fetch("http://dev.rapptrlabs.com/Tests/scripts/user-login.php", options)
       .then((response) =>
         response.json().then((post) => {
           console.log(post);
