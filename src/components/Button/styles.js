@@ -22,8 +22,8 @@ export const StyledButton = styled.button`
   ${(props) =>
     props.login &&
     css`
-      width: 160px;
-      height: 50px;
+      width: 15%;
+      height: 10%;
     `}
   ${(props) =>
     props.regular &&
@@ -34,6 +34,18 @@ export const StyledButton = styled.button`
       height: 28%;
       max-height: 35px;
       max-width: 15%;
+    `}
+    ${(props) =>
+    props.save &&
+    css`
+      margin: 0 auto;
+      font-size: 0.35em;
+      text-align: center;
+      width: 65%;
+      height: 28%;
+      max-height: 60px;
+      max-width: 55%;
+      backround: ${globalStyles.selectedColor};
     `}
   @media (max-width: 600px) {
     margin-bottom: 200px;

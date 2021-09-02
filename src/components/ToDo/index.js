@@ -5,58 +5,71 @@ import { StyledToDo } from "./styles";
 import { StyledInput } from "../../components/Input/styles.js";
 import { StyledButton } from "../../components/Button/styles.js";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import useTodo from "../../hooks/useTodo";
 
-export default function ToDo({ children }) {
+export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
   const [editMode, setEditMode] = useState(true);
-  const { todo, setTodo } = useTodo();
+  const [todoInputValue, setTodoInputValue] = useState({
+    id: 1,
+    item: "first todo",
+  });
+
   const toggleEditMode = () => {
-    console.log("works");
     setEditMode(!editMode);
   };
-  const handleTodo = (e) => {
+  const handleTodoChange = (e) => {
     const { name, value } = e.target;
-    setTodo((prevToDo) => ({ ...prevToDo, [name]: value }));
+    setTodoInputValue((prevToDo) => ({
+      [name]: value,
+    }));
   };
   const saveTodo = () => {
     setEditMode(!editMode);
+    setTodoList((prevList) => {
+      const item = prevList.find((listItem) => listItem.id === id);
+      item.item = todoInputValue.item;
+      const filteredList = prevList.filter((listItem) => listItem.id !== id);
+      return [...filteredList, item];
+    });
   };
-  const renderButtonOrIcons = () => {
-    if (editMode) {
-      return (
-        <StyledButton regular className="todo-save-btn" onClick={saveTodo}>
-          Save
-        </StyledButton>
-      );
-    } else {
-      return (
-        <>
-          <FaPencilAlt className="todo-icon pencil" onClick={toggleEditMode} />
-          <br />
-          <FaTrash className="todo-icon trash" />
-        </>
-      );
-    }
-  };
+
   return (
     <StyledToDo>
-      {editMode && (
+      {editMode ? (
         <StyledInput
           regular
           className="todo-input"
           type="text"
           name="item"
-          value={todo.item}
-          onChange={handleTodo}
+          value={todoInputValue.item}
+          onChange={handleTodoChange}
         />
+      ) : (
+        <p
+          className="todo-item-title"
+          style={{ fontSize: "40px", textShadow: "none", margin: "10px" }}
+        >
+          {todo}
+        </p>
       )}
-      <p
-        className="todo-title"
-        style={{ fontSize: "40px", textShadow: "none", margin: "10px" }}
-      >
-        {todo.item}
-      </p>
-      {renderButtonOrIcons()}
+      <div className="button-container">
+        {editMode ? (
+          <StyledButton save className="todo-save-btn" onClick={saveTodo}>
+            S
+          </StyledButton>
+        ) : (
+          <>
+            <FaPencilAlt
+              className="todo-icon pencil"
+              onClick={toggleEditMode}
+            />
+            <br />
+            <FaTrash
+              className="todo-icon trash"
+              onClick={() => deleteTodo(id)}
+            />
+          </>
+        )}
+      </div>
     </StyledToDo>
   );
 }
