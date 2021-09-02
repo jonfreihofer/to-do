@@ -195,7 +195,7 @@ label {
 .todo-icon {
   position: relative;
   top: 4%;
-  left: 25%;
+  left: 80%;
   cursor: pointer;
   font-size: 0.75em;
   margin: 5px;
@@ -204,16 +204,17 @@ label {
 .todo-input {
   position: relative;
   top: 4%;
-  right: 50%;
+  right: -3%;
 }
 
 .todo-save-btn {
+  position: relative;
   top: 4%;
-  right: 4%;
+  left: 20%;
 }
 
 .todo-title {
-  position: relative;
-  top: 25%;
+  position: absolute;
+  top: 30%;
   margin: 4px;
 }
