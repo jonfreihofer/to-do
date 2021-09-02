@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 // import { Context } from "../../context";
 import "../../App.css";
 import { StyledToDo } from "./styles";
 import { StyledInput } from "../../components/Input/styles.js";
 import { StyledButton } from "../../components/Button/styles.js";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
+import useTodo from "../../hooks/useTodo";
 
-export default function ToDo({
-  children,
-  todo,
-  toggleEditMode,
-  saveTodo,
-  handleTodo,
-  editMode,
-}) {
+export default function ToDo({ children }) {
+  const [editMode, setEditMode] = useState(true);
+  const { todo, setTodo } = useTodo();
+  const toggleEditMode = () => {
+    console.log("works");
+    setEditMode(!editMode);
+  };
+  const handleTodo = (e) => {
+    const { name, value } = e.target;
+    setTodo((prevToDo) => ({ ...prevToDo, [name]: value }));
+  };
+  const saveTodo = () => {
+    setEditMode(!editMode);
+  };
   const renderButtonOrIcons = () => {
     if (editMode) {
       return (
@@ -47,7 +54,7 @@ export default function ToDo({
         className="todo-title"
         style={{ fontSize: "40px", textShadow: "none", margin: "10px" }}
       >
-        {todo}
+        {todo.item}
       </p>
       {renderButtonOrIcons()}
     </StyledToDo>
