@@ -15,6 +15,8 @@ export default function Form({ children }) {
     userEmail: "",
     userPassword: "",
   });
+  const { validateEmail, emailIsValid, validatePassword, passwordIsValid } =
+    useValidate();
   const history = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,8 +47,6 @@ export default function Form({ children }) {
     history.push("/main");
   };
 
-  const { validateEmail, emailIsValid, validatePassword, passwordIsValid } =
-    useValidate();
   return (
     <form className="input-container" onSubmit={handleSubmit}>
       <label htmlFor="userEmail">Email:</label>

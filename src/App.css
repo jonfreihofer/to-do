@@ -6,7 +6,7 @@
   display: flex;
   letter-spacing: 2px;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   align-self: center;
   height: 50vh;
   margin-top: 17%;
@@ -134,13 +134,16 @@ label {
 }
 
 .searchBar {
-  border: solid 2px var(--main-bg-color);
+  border: solid 5px var(--main-bg-color);
+  border-radius: 15px;
   height: 28vh;
   width: 55%;
+  margin-bottom: 5px;
   display: inline;
 }
 .container-todo-items {
-  border: solid 2px var(--main-bg-color);
+  border: solid 5px var(--main-bg-color);
+  border-radius: 15px;
   height: 100vh;
   width: 55%;
   display: flex;
@@ -172,4 +175,46 @@ label {
   position: absolute;
   top: -200px;
   left: 900px;
+}
+
+@media (max-width: 600px) {
+  .todo {
+    margin: 0 auto;
+    font-size: 4em;
+    text-shadow: 4px 4px #888888;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+  }
+}
+
+.todo-icon {
+  position: relative;
+  top: 4%;
+  left: 80%;
+  cursor: pointer;
+  font-size: 0.75em;
+  margin: 5px;
+}
+
+.todo-input {
+  position: relative;
+  top: 4%;
+  right: -3%;
+}
+
+.todo-save-btn {
+  position: relative;
+  top: 4%;
+  left: 20%;
+}
+
+.todo-title {
+  position: absolute;
+  top: 30%;
+  margin: 4px;
 }

@@ -6,6 +6,10 @@ export const StyledToDo = styled.div`
   height: 20vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin-bottom: 5px;
   flex-wrap: wrap;
+  i {
+    font-size: 20px;
+  }
 `;
