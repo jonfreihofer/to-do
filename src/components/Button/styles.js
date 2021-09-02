@@ -22,8 +22,8 @@ export const StyledButton = styled.button`
   ${(props) =>
     props.login &&
     css`
-      width: 160px;
-      height: 50px;
+      width: 15%;
+      height: 10%;
     `}
   ${(props) =>
     props.regular &&
@@ -41,7 +41,7 @@ export const StyledButton = styled.button`
       margin: 0 auto;
       font-size: 0.35em;
       text-align: center;
-      width: 25%;
+      width: 65%;
       height: 28%;
       max-height: 60px;
       max-width: 55%;

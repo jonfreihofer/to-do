@@ -1,29 +1,71 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import ToDo from "../components/ToDo";
 
 export default function useTodo() {
-  const [todo, setTodo] = useState({
+  const [todoInputValue, setTodoInputValue] = useState({
     id: 1,
     item: "first todo",
   });
   const [todoList, setTodoList] = useState([]);
-  const newTodo = () => {
-    setTodoList((prevTodos) => [...prevTodos, todo]);
-    setTodo((prevTodos) => ({
+
+  const [todoSearch, setTodoSearch] = useState({
+    searchTodo: "",
+  });
+  const newTodo = useCallback(() => {
+    setTodoList((prevTodos) => {
+      console.log(prevTodos);
+      return [...prevTodos, todoInputValue];
+    });
+    setTodoInputValue((prevTodos) => ({
       id: prevTodos.id + 1,
       item: "",
     }));
-    console.log(todo.id);
-  };
+  }, [todoInputValue]);
+
   const deleteTodo = (id) => {
     console.log(id);
+    setTodoList((prevTodos) => {
+      console.log(prevTodos);
+      console.log("todo list", todoList);
+      return prevTodos.filter((listItem) => listItem.id !== id);
+    });
+  };
+
+  const handleTodoSearch = (e) => {
+    const { name, value } = e.target;
+    setTodoSearch((prevSearch) => ({ [name]: value }));
     setTodoList((prevTodo) =>
-      prevTodo.filter((listItem) => listItem.id !== id)
+      prevTodo.filter((todo) => {
+        if (!todo.value) return prevTodo;
+        return todo.item.toLowerCase().includes(value);
+      })
     );
+    console.log(value);
   };
 
   const list = todoList.map((todo) => {
-    return <ToDo key={todo.id} id={todo.id} todo={todo.item} />;
+    return (
+      <ToDo
+        key={todo.id}
+        id={todo.id}
+        todo={todo.item}
+        deleteTodo={deleteTodo}
+        todoInputValue={todoInputValue}
+        setTodoInputValue={setTodoInputValue}
+        setTodoList={setTodoList}
+      />
+    );
   });
-  return { todo, setTodo, todoList, setTodoList, newTodo, list, deleteTodo };
+
+  return {
+    todoInputValue,
+    setTodoInputValue,
+    todoList,
+    todoSearch,
+    handleTodoSearch,
+    setTodoList,
+    newTodo,
+    list,
+    deleteTodo,
+  };
 }

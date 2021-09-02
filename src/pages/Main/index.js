@@ -6,7 +6,7 @@ import useTodo from "../../hooks/useTodo";
 import "../../App.css";
 
 export default function Main({ children }) {
-  const { newTodo, list } = useTodo();
+  const { newTodo, list, todoSearch, handleTodoSearch } = useTodo();
 
   return (
     <>
@@ -17,13 +17,16 @@ export default function Main({ children }) {
             regular
             className="searchBar input"
             placeholder="search"
+            name="searchTodo"
+            value={todoSearch.searchTodo}
+            onChange={handleTodoSearch}
           />
           <StyledButton regular className="new" onClick={newTodo}>
             New
           </StyledButton>
         </div>
         <main className="container-todo-items">{list}</main>
-        <StyledButton login className="logout">
+        <StyledButton regular className="logout">
           Log Out
         </StyledButton>
       </div>
