@@ -193,28 +193,35 @@ label {
 }
 
 .todo-icon {
-  position: relative;
-  top: 4%;
-  left: 80%;
+  /* position: relative; */
+  top: 5%;
+  bottom: 20%;
+  left: 60%;
   cursor: pointer;
   font-size: 0.75em;
   margin: 5px;
 }
 
-.todo-input {
-  position: relative;
+.todo-input,
+.todo-item-title {
   top: 4%;
   right: -3%;
 }
 
 .todo-save-btn {
   position: relative;
-  top: 4%;
   left: 20%;
 }
 
-.todo-title {
-  position: absolute;
-  top: 30%;
-  margin: 4px;
+.button-container {
+  position: relative;
+  justify-content: space-between;
+  display: flex;
+  margin: 0 auto;
+  width: 55%;
+  height: 100%;
+  top: -35%;
+  margin-left: 70%;
+  right: 5%;
+  bottom: 60%;
 }

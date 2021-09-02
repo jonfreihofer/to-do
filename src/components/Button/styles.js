@@ -35,6 +35,18 @@ export const StyledButton = styled.button`
       max-height: 35px;
       max-width: 15%;
     `}
+    ${(props) =>
+    props.save &&
+    css`
+      margin: 0 auto;
+      font-size: 0.35em;
+      text-align: center;
+      width: 25%;
+      height: 28%;
+      max-height: 60px;
+      max-width: 55%;
+      backround: ${globalStyles.selectedColor};
+    `}
   @media (max-width: 600px) {
     margin-bottom: 200px;
     width: 55%;

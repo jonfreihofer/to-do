@@ -3,17 +3,17 @@ import ToDo from "../components/ToDo";
 
 export default function useTodo() {
   const [todo, setTodo] = useState({
-    id: 1,
-    item: "",
+    id: 0,
+    item: "first todo",
   });
   const [todoList, setTodoList] = useState([]);
   const newTodo = () => {
-    console.log("def works");
-    setTodoList((prevTodos) => [...prevTodos, todo]);
     setTodo((prevTodos) => ({
       id: prevTodos.id + 1,
       item: "",
     }));
+    setTodoList((prevTodos) => [...prevTodos, todo]);
+    console.log(todo.id);
   };
 
   const list = todoList.map((todo) => {

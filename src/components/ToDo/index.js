@@ -19,13 +19,20 @@ export default function ToDo({ children }) {
     setTodo((prevToDo) => ({ ...prevToDo, [name]: value }));
   };
   const saveTodo = () => {
+    if (!todo.edit) {
+      setTodo((prevTodos) => ({
+        id: prevTodos.id,
+        item: "Todo Goes Here",
+      }));
+      alert("Please Enter Something");
+    }
     setEditMode(!editMode);
   };
   const renderButtonOrIcons = () => {
     if (editMode) {
       return (
-        <StyledButton regular className="todo-save-btn" onClick={saveTodo}>
-          Save
+        <StyledButton save className="todo-save-btn" onClick={saveTodo}>
+          S
         </StyledButton>
       );
     } else {
@@ -40,7 +47,7 @@ export default function ToDo({ children }) {
   };
   return (
     <StyledToDo>
-      {editMode && (
+      {editMode ? (
         <StyledInput
           regular
           className="todo-input"
@@ -49,14 +56,15 @@ export default function ToDo({ children }) {
           value={todo.item}
           onChange={handleTodo}
         />
+      ) : (
+        <p
+          className="todo-item-title"
+          style={{ fontSize: "40px", textShadow: "none", margin: "10px" }}
+        >
+          {todo.item}
+        </p>
       )}
-      <p
-        className="todo-title"
-        style={{ fontSize: "40px", textShadow: "none", margin: "10px" }}
-      >
-        {todo.item}
-      </p>
-      {renderButtonOrIcons()}
+      <div className="button-container">{renderButtonOrIcons()}</div>
     </StyledToDo>
   );
 }

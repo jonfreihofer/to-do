@@ -3,7 +3,6 @@ import React from "react";
 import { StyledButton } from "../../components/Button/styles.js";
 import { StyledInput } from "../../components/Input/styles.js";
 import useTodo from "../../hooks/useTodo";
-import ToDo from "../../components/ToDo";
 import "../../App.css";
 
 export default function Main({ children }) {
