@@ -7,30 +7,28 @@ export default function useTodo() {
     item: "first todo",
   });
   const [todoList, setTodoList] = useState([]);
-  useEffect(
-    () => {
-      localStorage.setItem("todoList", JSON.stringify(todoList));
-    },
-    [todoList],
-    () => {
-      const localData = localStorage.getItem("todoList");
-      const dataJSON = JSON.parse(localData);
-      return setTodoList(localData ? dataJSON : []);
-    }
-  );
 
-  //   let hydrateTodos = () => {};
-  //   const localData = localStorage.getItem("todoList");
-  //   console.log(localData);
-  //   const dataJSON = JSON.parse(localData);
-  //   setTodoList(localData ? dataJSON : []);
-  //   hydrateTodos();
+  useEffect(() => {
+    const localInputData = localStorage.getItem("todoInputValue");
+    return setTodoInputValue(localInputData);
+  }, []);
+  useEffect(() => {
+    const localData = localStorage.getItem("todoList");
+    const dataJSON = JSON.parse(localData);
+    return setTodoList(localData ? dataJSON : []);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+    localStorage.setItem("todoInputValue", todoInputValue);
+  }, [todoList, todoInputValue]);
 
   const [todoSearch, setTodoSearch] = useState({
     searchTodo: "",
   });
   const newTodo = useCallback(() => {
     setTodoList((prevTodos) => {
+      localStorage.setItem("todoList", JSON.stringify(prevTodos));
       console.log(prevTodos);
       return [...prevTodos, todoInputValue];
     });
@@ -43,8 +41,6 @@ export default function useTodo() {
   const deleteTodo = (id) => {
     console.log(id);
     setTodoList((prevTodos) => {
-      console.log(prevTodos);
-      console.log("todo list", todoList);
       return prevTodos.filter((listItem) => listItem.id !== id);
     });
   };

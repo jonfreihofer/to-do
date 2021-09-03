@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { Context } from "../../context";
 import "../../App.css";
 import { StyledToDo } from "./styles";
@@ -10,8 +10,13 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
   const [editMode, setEditMode] = useState(true);
   const [todoInputValue, setTodoInputValue] = useState({
     id: 1,
-    item: "first todo",
+    item: "todo",
   });
+  useEffect(() => {
+    const storedValue = localStorage.setItem("editMode", editMode);
+    console.log("STORED", storedValue);
+    console.log(typeof storedValue);
+  }, [editMode]);
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
@@ -22,7 +27,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
       [name]: value,
     }));
   };
-  const saveTodo = () => {
+  const saveTodo = (id) => {
     setEditMode(!editMode);
     setTodoList((prevList) => {
       const item = prevList.find((listItem) => listItem.id === id);
@@ -40,6 +45,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
           className="todo-input"
           type="text"
           name="item"
+          placeholder="enter todo here"
           value={todoInputValue.item}
           onChange={handleTodoChange}
         />
@@ -53,7 +59,11 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
       )}
       <div className="button-container">
         {editMode ? (
-          <StyledButton save className="todo-save-btn" onClick={saveTodo}>
+          <StyledButton
+            save
+            className="todo-save-btn"
+            onClick={() => saveTodo(id)}
+          >
             S
           </StyledButton>
         ) : (
