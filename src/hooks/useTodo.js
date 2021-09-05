@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function useTodo() {
   const [todoInputValue, setTodoInputValue] = useState({
-    id: 1,
+    id: 0,
   });
 
   const [todoList, setTodoList] = useState([]);

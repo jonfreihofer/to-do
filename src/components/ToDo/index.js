@@ -25,6 +25,9 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
     setTodoInputValue((prevToDo) => ({
       [name]: value,
     }));
+    if (todoInputValue.item.length > 25) {
+      alert("Exceeded Maximum Characters");
+    }
   };
   const saveTodo = (id) => {
     if (!todoInputValue.item) return alert("enter a todo!");
@@ -46,7 +49,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
           type="text"
           name="item"
           placeholder="enter todo here"
-          value={todoInputValue.item ? todoInputValue.item : ""}
+          value={todoInputValue.item}
           onChange={handleTodoChange}
         />
       ) : (

@@ -42,6 +42,7 @@ export const StyledInput = styled.input`
     css`
       border: none;
       height: 25%;
+      width: 80%;
       max-height: 35px;
       max-width: 25%;
       ::placeholder {
