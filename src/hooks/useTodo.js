@@ -21,7 +21,6 @@ export default function useTodo() {
   const newTodo = () => {
     setTodoList((prevTodos) => {
       localStorage.setItem("todoList", JSON.stringify(prevTodos));
-      console.log(prevTodos);
       return [...prevTodos, todoInputValue];
     });
     setTodoInputValue((prevTodos) => ({
@@ -30,7 +29,6 @@ export default function useTodo() {
   };
 
   const deleteTodo = (id) => {
-    console.log(id);
     setTodoList((prevTodos) => {
       return prevTodos.filter((listItem) => listItem.id !== id);
     });
