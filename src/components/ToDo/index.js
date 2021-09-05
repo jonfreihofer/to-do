@@ -7,15 +7,14 @@ import { StyledButton } from "../../components/Button/styles.js";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
 export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
-  const [editMode, setEditMode] = useState(true);
+  const [editMode, setEditMode] = useState(false);
   const [todoInputValue, setTodoInputValue] = useState({
-    id: 1,
-    item: "todo",
+    item: "first todo",
   });
+
   useEffect(() => {
     const storedValue = localStorage.setItem("editMode", editMode);
     console.log("STORED", storedValue);
-    console.log(typeof storedValue);
   }, [editMode]);
 
   const toggleEditMode = () => {
@@ -28,6 +27,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
     }));
   };
   const saveTodo = (id) => {
+    if (!todoInputValue.item) return alert("enter a todo!");
     setEditMode(!editMode);
     setTodoList((prevList) => {
       const item = prevList.find((listItem) => listItem.id === id);
@@ -46,7 +46,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
           type="text"
           name="item"
           placeholder="enter todo here"
-          value={todoInputValue.item}
+          value={todoInputValue.item ? todoInputValue.item : ""}
           onChange={handleTodoChange}
         />
       ) : (
