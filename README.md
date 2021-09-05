@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+# Hyper todo list!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Had a blast making this little app. I decided to use styled components for the reusable components, and regular CSS for jsx elements and over all mark up structure. This process of initial style design took about 3 hours. Also installed React router for routing the login and main pages.
 
-## Available Scripts
 
-In the project directory, you can run:
+# Data Design / business logic
 
-### `yarn start`
+Next, I started structuring the data design and flow through the app. This probably took longer than it should, because I was struggling with a few different design patterns I had in my head. I ended up writing a couple of custom `useValidate` and `useTodo`, so I could share a few pieces of integral data and methods, namely with the `Form` and `ToDo` components. I thought this might be a good solution, as the project didn't seem complex enough to require high level third party state management. I decided to put the input data into a list which could be iterable and updated pretty easily. And of course give each `ToDo` component an id, so they could be selected and passed in update and delete methods. Data design and implementation took up most of my time, probably a total of 8 hours if I'm honest because of all the experimentation.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# API Issue
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Not sure if this was part of the test, but I wasn't able to solve the CORS Error I kept receiving when performing the `POST` request to the api you guys gave me. If you check out the `handleSubmit` method in the index.js folder of `Form` component, you'll see everything is correct, at least as far as I could tell. I downloaded an Allow CORS chrome extension and it still didn't work. Since I couldn't get it to respond properly I went ahead and routed the login to the main page if the validation methods passed.
 
-### `yarn test`
+# persistant state and filtered search bar
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This took about 3-4 hours, had to re-learn how the `localStorage` method works, and ended up saving changes to the `todoInputValue` and `todoList` when the component updated with `useEffect`, then called `useEffect` again to retrieve and parse the `localData` pass it into `setTodoList`. This is defined in the `useTodo` hook, and passed to the `ToDo` component, then mapped on the `list` arry in `Main`. The `todoSearch` feature was fun and tricky, ended up defining and grabbing the `todoSearchValue` and filtering out the index in a new `filteredTodos` array, defined in the `Main` component.
 
-### `yarn build`
+# Side Note
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Probably a data design issue, but I ended up having the `ToDo` component's default state not be in  `editMode`. I couldn't figure out an efficient way have one render that way without breaking other things. Maybe I should have used the Context api to share `editMode` instead of prop drilling from `Main`. Or in retrospect, I might have added an `isSelected` boolean state value as a prop, and somehow defined a specific `ToDo` to have `isSelected = true` when `Main` rendered. Since It's almost been a week, I decided to leave it like this as I was spending too much time on that one detail.
