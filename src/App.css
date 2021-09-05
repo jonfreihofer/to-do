@@ -91,14 +91,14 @@ label {
   .input-container .lock {
     font-size: 20px;
     position: absolute;
-    top: 135px;
-    left: 50px;
+    top: 33%;
+    left: 13%;
   }
 
   .input-container .book {
     position: absolute;
-    top: 45px;
-    left: 50px;
+    top: 10%;
+    left: 13%;
   }
 
   .email {
@@ -214,7 +214,7 @@ label {
 
 @media (max-width: 600px) {
   .logout {
-    bottom: 82%;
+    bottom: 73%;
     width: 20%;
   }
   .todo {
