@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 // import { Context } from "../../context";
 import { StyledButton } from "../../components/Button/styles.js";
 import { StyledInput } from "../../components/Input/styles.js";
@@ -7,31 +8,32 @@ import useTodo from "../../hooks/useTodo";
 import "../../App.css";
 
 export default function Main({ children }) {
-  const [todoSearchValue, setTodoSearchValue] = useState({
-    todoSearch: "",
-  });
-  const handleTodoSearch = (e) => {
-    const { name, value } = e.target;
-    setTodoSearchValue((prevTodo) => ({ [name]: value }));
-    setTodoList((prevTodos) =>
-      prevTodos.filter((todo) =>
-        todo.item.toLowerCase().includes(todoSearchValue.searchTodo)
-      )
-    );
-    console.log("todo search", todoList);
-  };
-
   const {
     newTodo,
     todoList,
-    editMode,
-    setEditMode,
     todoInputValue,
     setTodoInputValue,
     setTodoList,
     deleteTodo,
   } = useTodo();
-  const list = todoList.map((todo) => {
+  const [editMode, setEditMode] = useState(false);
+  const [todoSearchValue, setTodoSearchValue] = useState("");
+  let filteredTodos = todoList.filter((todo) => {
+    if (todoSearchValue !== "") {
+      return (
+        todo.item.toLowerCase().indexOf(todoSearchValue.toLowerCase()) !== -1
+      );
+    } else {
+      return todoList;
+    }
+  });
+  const history = useHistory();
+
+  const handleTodoSearch = (event) => {
+    setTodoSearchValue((prevValue) => event.target.value);
+  };
+
+  const list = filteredTodos.map((todo) => {
     return (
       <ToDo
         key={todo.id}
@@ -57,7 +59,7 @@ export default function Main({ children }) {
             className="searchBar input"
             placeholder="search"
             name="searchTodo"
-            value={todoSearchValue.todoSearch}
+            value={todoSearchValue}
             onChange={handleTodoSearch}
           />
           <StyledButton regular className="new" onClick={newTodo}>
@@ -65,7 +67,11 @@ export default function Main({ children }) {
           </StyledButton>
         </div>
         <main className="container-todo-items">{list}</main>
-        <StyledButton regular className="logout">
+        <StyledButton
+          regular
+          className="logout"
+          onClick={() => history.push("/")}
+        >
           Log Out
         </StyledButton>
       </div>
