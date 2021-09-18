@@ -62,7 +62,14 @@ export default function Main({ children }) {
             value={todoSearchValue}
             onChange={handleTodoSearch}
           />
-          <StyledButton regular className="new" onClick={newTodo}>
+          <StyledButton
+            regular
+            className="new"
+            onClick={() => {
+              setEditMode(!editMode);
+              newTodo();
+            }}
+          >
             New
           </StyledButton>
         </div>
