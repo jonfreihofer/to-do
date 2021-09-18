@@ -9,7 +9,7 @@ import { FaPencilAlt, FaTrash } from "react-icons/fa";
 export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
   const [editMode, setEditMode] = useState(false);
   const [todoInputValue, setTodoInputValue] = useState({
-    item: "first todo",
+    item: "my todo",
   });
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
             className="todo-save-btn"
             onClick={() => saveTodo(id)}
           >
-            S
+            Save
           </StyledButton>
         ) : (
           <>

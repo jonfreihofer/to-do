@@ -6,7 +6,6 @@ export const StyledToDo = styled.div`
   height: 20vh;
   width: 100%;
   display: flex;
-
   flex-direction: row;
   margin-bottom: 5px;
   flex-wrap: wrap;
