@@ -2,5 +2,5 @@
 export default {
   mainColor: "#4cdba7",
   selectedColor: "#4fe7e7",
-  font: "Oleo Script, cursive",
+  font: "'Archivo Black', sans-serif",
 };

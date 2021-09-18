@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 
 export const StyledInputEmail = styled.input`
   border: ${({ emailIsValid }) => (emailIsValid ? "none" : "solid 3px red")};
-  height: 50%;
-  width: 25%;
+  height: 60px;
+  width: 400px;
   border-radius: 15px;
   box-shadow: 5px 10px #888888;
   margin-bottom: 15px;
@@ -27,8 +27,8 @@ export const StyledInputEmail = styled.input`
 export const StyledInput = styled.input`
   border: ${({ passwordIsValid }) =>
     passwordIsValid ? "none" : "solid 3px red"};
-  height: 50%;
-  width: 25%;
+  height: 60px;
+  width: 400px;
   border-radius: 15px;
   box-shadow: 5px 10px #888888;
   margin-top: 2px;
@@ -41,8 +41,8 @@ export const StyledInput = styled.input`
     props.regular &&
     css`
       border: none;
-      height: 25%;
-      width: 80%;
+      height: 60px;
+      width: 400px;
       max-height: 35px;
       max-width: 25%;
       ::placeholder {

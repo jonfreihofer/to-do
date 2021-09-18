@@ -59,12 +59,13 @@ label {
   font-size: 20px;
   position: absolute;
   top: 53%;
-  left: 37%;
+  left: 37.5%;
 }
 
 .input-container .book {
+  position: absolute;
   top: 18%;
-  left: 37%;
+  left: 37.5%;
 }
 
 @media (max-width: 600px) {
@@ -135,6 +136,7 @@ label {
 
 .searchBar {
   border: solid 5px var(--main-bg-color);
+  box-shadow: 4px 4px #888888;
   border-radius: 15px;
   height: 18%;
   width: 55%;
@@ -142,6 +144,7 @@ label {
   display: inline;
 }
 .container-todo-items {
+  box-shadow: 4px 4px #888888;
   border: solid 5px var(--main-bg-color);
   border-radius: 15px;
   height: 70%;
@@ -179,6 +182,7 @@ label {
 
 .todo-icon {
   /* position: relative; */
+  text-shadow: 4px 4px #888888;
   top: 5%;
   bottom: 20%;
   left: 60%;

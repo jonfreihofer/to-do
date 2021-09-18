@@ -6,7 +6,7 @@
 body {
   margin: 0 auto;
   color: var(--main-bg-color);
-  font-family: "Oleo Script", cursive;
+  font-family: "Archivo Black", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgba(211, 209, 209, 0.822);
