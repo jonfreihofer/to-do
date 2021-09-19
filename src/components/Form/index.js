@@ -50,35 +50,43 @@ export default function Form({ children }) {
   return (
     <form className="input-container" onSubmit={handleSubmit}>
       <label htmlFor="userEmail">Email:</label>
-      <FaAddressBook className="form-icon book" />
-      <StyledInputEmail
-        type="email"
-        placeholder="user@rapptrlabs.com"
-        name="userEmail"
-        value={inputData.userEmail}
-        onChange={handleChange}
-        emailIsValid={emailIsValid}
-        required
-      />
+      <div className="inputWithIcon">
+        <FaAddressBook className="form-icon book" />
+        <StyledInputEmail
+          type="email"
+          placeholder="user@rapptrlabs.com"
+          name="userEmail"
+          value={inputData.userEmail}
+          onChange={handleChange}
+          emailIsValid={emailIsValid}
+          required
+        />
+      </div>
       {!emailIsValid && (
-        <p className="email" style={{ color: "red", fontSize: "12px" }}>
-          Invalid Email
-        </p>
+        <div className="popups">
+          <p className="email" style={{ color: "red", fontSize: "12px" }}>
+            Invalid Email
+          </p>
+        </div>
       )}
       <label htmlFor="userPassword">Password:</label>
-      <FaLock className="form-icon lock" />
-      <StyledInput
-        type="password"
-        placeholder={"must be at least 4 characters"}
-        name="userPassword"
-        value={inputData.userPassword}
-        onChange={handleChange}
-        passwordIsValid={passwordIsValid}
-      />
+      <div className="inputWithIcon">
+        <FaLock className="form-icon lock" />
+        <StyledInput
+          type="password"
+          placeholder={"must be at least 4 characters"}
+          name="userPassword"
+          value={inputData.userPassword}
+          onChange={handleChange}
+          passwordIsValid={passwordIsValid}
+        />
+      </div>
       {!passwordIsValid && (
-        <p className="password" style={{ color: "red", fontSize: "12px" }}>
-          Invalid Password
-        </p>
+        <div className="popups">
+          <p className="password" style={{ color: "red", fontSize: "12px" }}>
+            Invalid Password
+          </p>
+        </div>
       )}
 
       <StyledButton
