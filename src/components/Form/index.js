@@ -54,7 +54,7 @@ export default function Form({ children }) {
         <FaAddressBook className="form-icon book" />
         <StyledInputEmail
           type="email"
-          placeholder="user@rapptrlabs.com"
+          placeholder="user@hypertodo.com"
           name="userEmail"
           value={inputData.userEmail}
           onChange={handleChange}
