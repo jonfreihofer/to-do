@@ -30,7 +30,7 @@ export const StyledButton = styled.button`
     css`
       margin: 0 auto;
       font-size: 0.25em;
-      width: 15%;
+      width: 25%;
       height: 28%;
       max-height: 35px;
       max-width: 15%;

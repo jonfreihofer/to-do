@@ -74,13 +74,11 @@ export default function Main({ children }) {
           </StyledButton>
         </div>
         <main className="container-todo-items">{list}</main>
-        <StyledButton
-          regular
-          className="logout"
-          onClick={() => history.push("/")}
-        >
-          Log Out
-        </StyledButton>
+        <div className="logoutButton">
+          <button className="logout" onClick={() => history.push("/")}>
+            Log Out
+          </button>
+        </div>
       </div>
     </>
   );

@@ -70,7 +70,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
             Save
           </StyledButton>
         ) : (
-          <>
+          <div className="saveAndDeleteIcons">
             <FaPencilAlt
               className="todo-icon pencil"
               onClick={toggleEditMode}
@@ -80,7 +80,7 @@ export default function ToDo({ children, id, setTodoList, deleteTodo, todo }) {
               className="todo-icon trash"
               onClick={() => deleteTodo(id)}
             />
-          </>
+          </div>
         )}
       </div>
     </StyledToDo>
