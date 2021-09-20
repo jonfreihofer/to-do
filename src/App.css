@@ -155,7 +155,7 @@ label {
   box-shadow: 4px 4px #888888;
   border: solid 5px var(--main-bg-color);
   border-radius: 15px;
-  height: 70%;
+  height: auto;
   width: 55%;
   display: flex;
   flex-direction: column;
